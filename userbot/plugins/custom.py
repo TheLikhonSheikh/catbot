@@ -30,7 +30,7 @@ vlist = [
     "NO_OF_ROWS_IN_HELP",
     "NO_OF_COLUMNS_IN_HELP",
     "CUSTOM_STICKER_PACKNAME",
-] 
+]
 
 oldvars = {
     "PM_PIC": "pmpermit_pic",
@@ -101,10 +101,8 @@ async def bad(event):  # sourcery no-metrics
                 await edit_delete(
                     event, f"📑 Value of **{vname}** is  `{var_data}`", time=20
                 )
-            except Exception as e:
-                await edit_delete(
-                    event, "Sorry the var does not exist in my database"
-                    )
+            except Exception:
+                await edit_delete(event, "Sorry the var does not exist in my database")
         elif cmd == "del":
             delgvar(vname)
             await edit_delete(
@@ -115,7 +113,7 @@ async def bad(event):  # sourcery no-metrics
     else:
         await edit_delete(
             event, f"**📑 Give correct var name from the list :\n\n**{vnlist}", time=60
-        ) # will fix this later
+        )  # will fix this later
 
 
 @catub.cat_cmd(

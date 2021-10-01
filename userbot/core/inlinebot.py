@@ -698,37 +698,32 @@ async def on_plug_in_callback_query_handler(event):
     await event.edit(text, buttons=buttons)
 
 
-
-
 @catub.bot_cmd(pattern=f"^/inline$")
 async def bot_help_menu(event):
-	chat = event.chat.id
-	if chat == Config.OWNER_ID:
-		inlinemenu = main_menu()
-		if HELP_PIC:
-			await event.client.send_message(
-				entity=event.chat_id,
-				message=inlinemenu[0],
-				parse_mode="markdown",
-				file=HELP_PIC,
-				link_preview=False,
-				buttons=inlinemenu[1],
-			)
-		elif not HELP_PIC:
-			await event.client.send_message(
-				entity=event.chat_id,
-				message=inlinemenu[0],
-				parse_mode="markdown",
-				link_preview=False,
-				buttons=inlinemenu[1],
-			)
-		else:
-			return
-	else:
-		await event.client.send_message(
-			entity=event.chat_id,
-			message="Sorry, this command only works for the owner of this bot."
-			)
-
-
-
+    chat = event.chat.id
+    if chat == Config.OWNER_ID:
+        inlinemenu = main_menu()
+        if HELP_PIC:
+            await event.client.send_message(
+                entity=event.chat_id,
+                message=inlinemenu[0],
+                parse_mode="markdown",
+                file=HELP_PIC,
+                link_preview=False,
+                buttons=inlinemenu[1],
+            )
+        elif not HELP_PIC:
+            await event.client.send_message(
+                entity=event.chat_id,
+                message=inlinemenu[0],
+                parse_mode="markdown",
+                link_preview=False,
+                buttons=inlinemenu[1],
+            )
+        else:
+            return
+    else:
+        await event.client.send_message(
+            entity=event.chat_id,
+            message="Sorry, this command only works for the owner of this bot.",
+        )
